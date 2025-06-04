@@ -1,0 +1,11 @@
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\bin\Debug\BLL_PolyCafe.dll
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\bin\Debug\BLL_PolyCafe.pdb
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\bin\Debug\DAL_PolyCafe.dll
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\bin\Debug\DTO_PolyCafe.dll
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\bin\Debug\DAL_PolyCafe.pdb
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\bin\Debug\DTO_PolyCafe.pdb
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\obj\Debug\BLL_PolyCafe.csproj.AssemblyReference.cache
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\obj\Debug\BLL_PolyCafe.csproj.CoreCompileInputs.cache
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\obj\Debug\BLL_Poly.D5CE15BB.Up2Date
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\obj\Debug\BLL_PolyCafe.dll
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\BLL_PolyCafe\obj\Debug\BLL_PolyCafe.pdb

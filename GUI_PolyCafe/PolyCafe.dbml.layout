@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.125" name="PolyCafe">
+  <DataContextMoniker Name="/PolyCafeDataContext" />
+  <nestedChildShapes>
+    <classShape Id="1d26d3ab-9c80-4e53-b0d4-6cb954fe94be" absoluteBounds="6.25, 1, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/PolyCafeDataContext/ChiTietPhieu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6890675c-a1b3-443e-b964-0f4b3c0cd36b" absoluteBounds="6.265, 1.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c3b5e33e-fed9-48fd-8b5c-ae3cc6c90045" absoluteBounds="0.75, 7.125, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/PolyCafeDataContext/LoaiSanPham" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4747fb1f-351e-4e73-947d-7bec8ce544b4" absoluteBounds="0.765, 7.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d0a1acc1-8df4-43e9-a7ea-d1464004d2a0" absoluteBounds="0.75, 3.875, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/PolyCafeDataContext/NhanVien" />
+      <nestedChildShapes>
+        <elementListCompartment Id="37946769-ebe0-4f51-aa7b-437d3f137cb7" absoluteBounds="0.765, 4.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="53a4e455-516e-45b5-9bd8-73b1a9edec66" absoluteBounds="3.5, 0.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/PolyCafeDataContext/PhieuBanHang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8e948b13-226f-4dbc-bc87-0c9241a451e0" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1e0e4642-7f22-4bc1-81be-58dc1977fa6e" absoluteBounds="3.5, 6.875, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/PolyCafeDataContext/SanPham" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fca3b4c5-9c1d-4e2d-b7c4-887f86aa8569" absoluteBounds="3.515, 7.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8e0b7f65-e58b-4ccc-8de3-ad448afe363a" absoluteBounds="0.75, 1.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PolyCafeDataContext/TheLuuDong" />
+      <nestedChildShapes>
+        <elementListCompartment Id="80284c90-1541-49ea-9e5d-f8a7788776d9" absoluteBounds="0.765, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 1.82294840494792); (6.25 : 1.82294840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PolyCafeDataContext/PhieuBanHang/PhieuBanHang_ChiTietPhieu" />
+      <nodes>
+        <classShapeMoniker Id="53a4e455-516e-45b5-9bd8-73b1a9edec66" />
+        <classShapeMoniker Id="1d26d3ab-9c80-4e53-b0d4-6cb954fe94be" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.85659912109375); (4.5 : 4.85659912109375); (4.5 : 2.64589680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PolyCafeDataContext/NhanVien/NhanVien_PhieuBanHang" />
+      <nodes>
+        <classShapeMoniker Id="d0a1acc1-8df4-43e9-a7ea-d1464004d2a0" />
+        <classShapeMoniker Id="53a4e455-516e-45b5-9bd8-73b1a9edec66" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 7.85659912109375); (7.25 : 7.85659912109375); (7.25 : 2.77089680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PolyCafeDataContext/SanPham/SanPham_ChiTietPhieu" />
+      <nodes>
+        <classShapeMoniker Id="1e0e4642-7f22-4bc1-81be-58dc1977fa6e" />
+        <classShapeMoniker Id="1d26d3ab-9c80-4e53-b0d4-6cb954fe94be" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 7.81814697265625); (3.5 : 7.81814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PolyCafeDataContext/LoaiSanPham/LoaiSanPham_SanPham" />
+      <nodes>
+        <classShapeMoniker Id="c3b5e33e-fed9-48fd-8b5c-ae3cc6c90045" />
+        <classShapeMoniker Id="1e0e4642-7f22-4bc1-81be-58dc1977fa6e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.81814697265625); (3.5 : 1.81814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PolyCafeDataContext/TheLuuDong/TheLuuDong_PhieuBanHang" />
+      <nodes>
+        <classShapeMoniker Id="8e0b7f65-e58b-4ccc-8de3-ad448afe363a" />
+        <classShapeMoniker Id="53a4e455-516e-45b5-9bd8-73b1a9edec66" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
