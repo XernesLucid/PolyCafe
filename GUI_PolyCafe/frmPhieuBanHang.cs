@@ -179,67 +179,124 @@ namespace GUI_PolyCafe
 
 
 
+        private bool ValidateChiTiet()
+        {
+            if (string.IsNullOrWhiteSpace(txtMaPhieu.Text) ||
+                cboSanPham.SelectedIndex < 0 ||
+                string.IsNullOrWhiteSpace(txtDonGia.Text) ||
+                string.IsNullOrWhiteSpace(txtSoLuong.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin chi tiết!", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!decimal.TryParse(txtDonGia.Text, out decimal donGia) || donGia < 0)
+            {
+                MessageBox.Show("Đơn giá phải là số và không âm!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!int.TryParse(txtSoLuong.Text, out int soLuong) || soLuong <= 0)
+            {
+                MessageBox.Show("Số lượng phải là số nguyên dương!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        private void LamMoiChiTiet()
+        {
+            cboSanPham.SelectedIndex = -1;
+            txtDonGia.Text = "";
+            txtSoLuong.Text = "";
+            txtThanhTien.Text = "";
+            cboSanPham.Focus();
+        }
 
         private void btnThemChiTiet_Click(object sender, EventArgs e)
         {
+            if (!ValidateChiTiet()) return;
+            string maPhieu = txtMaPhieu.Text;
+            string maSP = cboSanPham.SelectedValue.ToString();
+            if (db.ChiTietPhieus.Any(x => x.MaPhieu == maPhieu && x.MaSanPham == maSP))
+            {
+                MessageBox.Show("Chi tiết phiếu này đã tồn tại!", "Trùng chi tiết", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 ChiTietPhieu ctp = new ChiTietPhieu
                 {
-                    MaPhieu = txtMaPhieu.Text,
-                    MaSanPham = cboSanPham.SelectedValue.ToString(),
+                    MaPhieu = maPhieu,
+                    MaSanPham = maSP,
                     DonGia = decimal.Parse(txtDonGia.Text),
-                    SoLuong = int.Parse(txtSoLuong.Text),
+                    SoLuong = int.Parse(txtSoLuong.Text)
                 };
                 db.ChiTietPhieus.InsertOnSubmit(ctp);
                 db.SubmitChanges();
-                MessageBox.Show("Thêm chi tiết phiếu thành công!");
+                MessageBox.Show("Thêm chi tiết phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LamMoiChiTiet();
                 LoadChiTietPhieu();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Lỗi khi thêm chi tiết: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnSuaChiTiet_Click(object sender, EventArgs e)
         {
+            if (!ValidateChiTiet()) return;
+            string maPhieu = txtMaPhieu.Text;
+            string maSP = cboSanPham.SelectedValue.ToString();
+            var ctp = db.ChiTietPhieus.SingleOrDefault(x => x.MaPhieu == maPhieu && x.MaSanPham == maSP);
+            if (ctp == null)
+            {
+                MessageBox.Show("Không tìm thấy chi tiết phiếu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
-                var ctp = db.ChiTietPhieus.SingleOrDefault(
-                    x => x.MaPhieu == txtMaPhieu.Text && x.MaSanPham == cboSanPham.SelectedValue.ToString());
-                if (ctp != null)
-                {
-                    ctp.DonGia = decimal.Parse(txtDonGia.Text);
-                    ctp.SoLuong = int.Parse(txtSoLuong.Text);
-                    db.SubmitChanges();
-                    MessageBox.Show("Sửa chi tiết phiếu thành công!");
-                    LoadChiTietPhieu();
-                }
+                ctp.DonGia = decimal.Parse(txtDonGia.Text);
+                ctp.SoLuong = int.Parse(txtSoLuong.Text);
+                db.SubmitChanges();
+                MessageBox.Show("Sửa chi tiết phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LamMoiChiTiet();
+                LoadChiTietPhieu();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Lỗi khi sửa chi tiết: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnXoaChiTiet_Click(object sender, EventArgs e)
         {
-            try
+            string maPhieu = txtMaPhieu.Text;
+            string maSP = cboSanPham.SelectedValue?.ToString();
+            if (string.IsNullOrWhiteSpace(maPhieu) || string.IsNullOrWhiteSpace(maSP))
             {
-                var ctp = db.ChiTietPhieus.SingleOrDefault(
-                    x => x.MaPhieu == txtMaPhieu.Text && x.MaSanPham == cboSanPham.SelectedValue.ToString());
-                if (ctp != null)
+                MessageBox.Show("Vui lòng chọn chi tiết cần xóa!", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var ctp = db.ChiTietPhieus.SingleOrDefault(x => x.MaPhieu == maPhieu && x.MaSanPham == maSP);
+            if (ctp == null)
+            {
+                MessageBox.Show("Không tìm thấy chi tiết phiếu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (MessageBox.Show("Bạn có chắc muốn xóa chi tiết này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
                 {
                     db.ChiTietPhieus.DeleteOnSubmit(ctp);
                     db.SubmitChanges();
-                    MessageBox.Show("Xóa chi tiết phiếu thành công!");
+                    MessageBox.Show("Xóa chi tiết phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LamMoiChiTiet();
                     LoadChiTietPhieu();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa chi tiết: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -276,36 +333,24 @@ namespace GUI_PolyCafe
         {
             if (e.RowIndex >= 0)
             {
-                if (e.RowIndex >= 0)
+                var row = dgvPhieuBanHang.Rows[e.RowIndex];
+                txtMaPhieu.Text = row.Cells["MaPhieu"].Value?.ToString();
+                txtMaPhieu.Enabled = false;
+                cboThe.SelectedValue = row.Cells["MaThe"].Value?.ToString();
+                cboNhanVien.SelectedValue = row.Cells["MaNhanVien"].Value?.ToString();
+                if (row.Cells["NgayTao"].Value != null)
                 {
-                    var row = dgvPhieuBanHang.Rows[e.RowIndex];
-
-                    // Hiển thị thông tin phiếu lên các control
-                    txtMaPhieu.Text = row.Cells["MaPhieu"].Value?.ToString();
-                    cboThe.SelectedValue = row.Cells["MaThe"].Value?.ToString();
-                    cboNhanVien.SelectedValue = row.Cells["MaNhanVien"].Value?.ToString();
-
-                    // Ngày tạo
-                    if (row.Cells["NgayTao"].Value != null)
-                    {
-                        DateTime ngayTao;
-                        if (DateTime.TryParse(row.Cells["NgayTao"].Value.ToString(), out ngayTao))
-                        {
-                            dtpNgayTao.Value = ngayTao;
-                        }
-                    }
-
-                    // Trạng thái
-                    if (row.Cells["TrangThai"].Value != null)
-                    {
-                        bool trangThai = Convert.ToBoolean(row.Cells["TrangThai"].Value);
-                        rdoChoXacNhan.Checked = !trangThai;
-                        rdoDaThanhToan.Checked = trangThai;
-                    }
-
-                    // Load chi tiết phiếu tương ứng
-                    LoadPhieuBanHang();
+                    DateTime ngayTao;
+                    if (DateTime.TryParse(row.Cells["NgayTao"].Value.ToString(), out ngayTao))
+                        dtpNgayTao.Value = ngayTao;
                 }
+                if (row.Cells["TrangThai"].Value != null)
+                {
+                    bool trangThai = Convert.ToBoolean(row.Cells["TrangThai"].Value);
+                    rdoChoXacNhan.Checked = !trangThai;
+                    rdoDaThanhToan.Checked = trangThai;
+                }
+                LoadPhieuBanHang();
             }
         }
     }

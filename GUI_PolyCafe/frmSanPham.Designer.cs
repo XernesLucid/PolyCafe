@@ -163,6 +163,7 @@ namespace GUI_PolyCafe
             this.btnLamMoi.Size = new System.Drawing.Size(222, 66);
             this.btnLamMoi.TabIndex = 38;
             this.btnLamMoi.Text = "Làm Mới";
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // btnThem
             // 
@@ -443,6 +444,7 @@ namespace GUI_PolyCafe
             this.dgvDSSP.ThemeStyle.RowsStyle.Height = 22;
             this.dgvDSSP.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDSSP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvDSSP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSP_CellClick);
             // 
             // frmSanPham
             // 

@@ -27,19 +27,44 @@ namespace GUI_PolyCafe
             // code nút thêm thẻ lưu động cho danh sách
             try
             {
+                // Ràng buộc kiểm tra dữ liệu đầu vào
+                if (string.IsNullOrWhiteSpace(txtMaThe.Text))
+                {
+                    MessageBox.Show("Mã thẻ không được để trống.");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(txtChuSoHuu.Text))
+                {
+                    MessageBox.Show("Chủ sở hữu không được để trống.");
+                    return;
+                }
+                // Theo testcase 2: không cho phép thêm khi trạng thái không hoạt động
+                if (!chkHoatDong.Checked)
+                {
+                    MessageBox.Show("Không được thêm thẻ lưu động khi trạng thái là 'Không hoạt động'.");
+                    return;
+                }
+
+                // Kiểm tra trùng mã thẻ
+                bool exists = db.TheLuuDongs.Any(t => t.MaThe == txtMaThe.Text);
+                if (exists)
+                {
+                    MessageBox.Show("Mã thẻ đã tồn tại. Vui lòng nhập mã thẻ khác.");
+                    return;
+                }
+
                 TheLuuDong the = new TheLuuDong
                 {
                     MaThe = txtMaThe.Text,
                     ChuSoHuu = txtChuSoHuu.Text,
                     TrangThai = chkHoatDong.Checked
                 };
-                using (PolyCafeDataContext db = new PolyCafeDataContext())
-                {
-                    db.TheLuuDongs.InsertOnSubmit(the);
-                    db.SubmitChanges();
-                }
+                db.TheLuuDongs.InsertOnSubmit(the);
+                db.SubmitChanges();
+
                 MessageBox.Show("Thêm thẻ lưu động thành công!");
                 LoadTheLuuDong();
+                LamMoi();
             }
             catch (Exception ex)
             {
@@ -73,6 +98,17 @@ namespace GUI_PolyCafe
             // code nút sửa thẻ lưu động cho danh sách
             try
             {
+                if (string.IsNullOrWhiteSpace(txtMaThe.Text))
+                {
+                    MessageBox.Show("Mã thẻ không được để trống.");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(txtChuSoHuu.Text))
+                {
+                    MessageBox.Show("Chủ sở hữu không được để trống.");
+                    return;
+                }
+
                 string maThe = txtMaThe.Text;
                 TheLuuDong the = db.TheLuuDongs.FirstOrDefault(t => t.MaThe == maThe);
                 if (the != null)
@@ -82,6 +118,7 @@ namespace GUI_PolyCafe
                     db.SubmitChanges();
                     MessageBox.Show("Sửa thẻ lưu động thành công!");
                     LoadTheLuuDong();
+                    LamMoi();
                 }
                 else
                 {
@@ -111,6 +148,12 @@ namespace GUI_PolyCafe
             // code nút xóa thẻ lưu động cho danh sách
             try
             {
+                if (string.IsNullOrWhiteSpace(txtMaThe.Text))
+                {
+                    MessageBox.Show("Mã thẻ không được để trống.");
+                    return;
+                }
+
                 string maThe = txtMaThe.Text;
                 TheLuuDong the = db.TheLuuDongs.FirstOrDefault(t => t.MaThe == maThe);
                 if (the != null)
@@ -119,6 +162,7 @@ namespace GUI_PolyCafe
                     db.SubmitChanges();
                     MessageBox.Show("Xóa thẻ lưu động thành công!");
                     LoadTheLuuDong();
+                    LamMoi();
                 }
                 else
                 {

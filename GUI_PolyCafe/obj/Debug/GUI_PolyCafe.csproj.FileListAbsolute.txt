@@ -21,6 +21,6 @@ C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\GUI_PolyCafe\obj\Debug\GUI_Pol
 C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\GUI_PolyCafe\obj\Debug\GUI_PolyCafe.frmSanPham.resources
 C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\GUI_PolyCafe\obj\Debug\GUI_PolyCafe.frmLoaiSanPham.resources
 C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\GUI_PolyCafe\obj\Debug\GUI_PolyCafe.frmPhieuBanHang.resources
-C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\GUI_PolyCafe\obj\Debug\GUI_PolyCafe.frmChiTietPhieu.resources
 C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\GUI_PolyCafe\obj\Debug\GUI_PolyCafe.frmTheLuuDong.resources
 C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\GUI_PolyCafe\obj\Debug\GUI_PolyCafe.frmThongKe.resources
+C:\SD1903_SOF2053_Github_Source\PolyCafe\PolyCafe\GUI_PolyCafe\obj\Debug\GUI_PolyCafe.ThongKeNV.resources

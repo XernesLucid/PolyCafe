@@ -68,11 +68,6 @@ namespace GUI_PolyCafe
             salesReceiptForm.ShowDialog();
         }
 
-        private void chiTiếtPhiếuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmChiTietPhieu salesReceiptDetailForm = new frmChiTietPhieu();
-            salesReceiptDetailForm.ShowDialog();
-        }
 
         private void thẻLưuĐộngToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -84,6 +79,12 @@ namespace GUI_PolyCafe
         {
             frmThongKe frmThongKe = new frmThongKe();
             frmThongKe.ShowDialog();
+        }
+
+        private void thốngKêTheoNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ThongKeNV thongKeNV = new ThongKeNV();
+            thongKeNV.ShowDialog();
         }
     }
 }

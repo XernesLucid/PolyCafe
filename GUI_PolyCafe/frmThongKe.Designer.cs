@@ -48,11 +48,11 @@
             // lblTitle
             // 
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.Gray;
+            this.lblTitle.ForeColor = System.Drawing.Color.DodgerBlue;
             this.lblTitle.Location = new System.Drawing.Point(19, 20);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(386, 33);
+            this.lblTitle.Size = new System.Drawing.Size(716, 33);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Báo cáo thống kê";
             // 

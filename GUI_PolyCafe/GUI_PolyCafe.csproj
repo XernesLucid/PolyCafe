@@ -53,12 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmChiTietPhieu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmChiTietPhieu.Designer.cs">
-      <DependentUpon>frmChiTietPhieu.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,9 +120,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmChiTietPhieu.resx">
-      <DependentUpon>frmChiTietPhieu.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="ThongKeNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeNV.Designer.cs">
+      <DependentUpon>ThongKeNV.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +166,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ThongKeNV.resx">
+      <DependentUpon>ThongKeNV.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="PolyCafe.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -209,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\duanmau.mainmenu.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
